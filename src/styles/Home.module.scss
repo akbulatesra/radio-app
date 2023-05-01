@@ -1,0 +1,77 @@
+.imageWrapper {
+  background-color: rgb(250, 224, 177);
+  width: 70vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.audio {
+  display: none;
+}
+
+.list {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.list > div {
+  * {
+    color: rgb(207, 78, 61);
+  }
+  span {
+    background-color: rgb(207, 78, 61);
+  }
+  cursor: pointer;
+  background: none;
+}
+.select > :nth-child(3) {
+  border: none;
+  box-shadow: 0 0 0 1px rgb(207, 78, 61);
+  background: none;
+  width: 20vw;
+}
+.select > :nth-child(4) {
+  border: none;
+  box-shadow: 0 0 0 1px rgb(207, 78, 61);
+  background: #fae0b1;
+  div {
+    color: #7e8b59;
+  }
+  div > *:hover {
+    background-color: #f0a749;
+  }
+}
+@media screen and (max-width: 767px) {
+  .imageWrapper {
+    width: 90vw;
+    height: 90vh;
+    flex-direction: column;
+    max-width: 500px;
+  }
+  .select > :nth-child(3) {
+    border: none;
+    box-shadow: 0 0 0 1px rgb(207, 78, 61);
+    background: none;
+    width: 70vw;
+    max-width: 250px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 860px) {
+  .list > div {
+    font-size: 15px;
+  }
+}

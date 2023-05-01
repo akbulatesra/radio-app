@@ -1,0 +1,12 @@
+.loader {
+  animation: move 10s infinite;
+  z-index: 3;
+}
+@keyframes move {
+  from {
+    left: 0vw;
+  }
+  to {
+    left: 100vw;
+  }
+}
