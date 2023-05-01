@@ -1,5 +1,4 @@
-import { ColorRing, Vortex } from 'react-loader-spinner';
-import 'react-clip-loader/dist/index.css';
+import { ColorRing } from 'react-loader-spinner';
 import styles from '../styles/Loading.module.scss';
 
 const Loading = () => {
