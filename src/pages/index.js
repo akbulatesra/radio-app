@@ -78,7 +78,10 @@ export default function Home() {
       <main className={`${styles.wrapper} ${orbitron.className}`}>
         <ToastContainer pauseOnHover theme="colored" />
         <div className={styles.loaderWrapper}>
-          {control === false && selectedCountry !== null && <Loading />}
+          {control === false &&
+            (selectedCountry !== null ||
+              selectedLanguage !== null ||
+              selectedTag !== null) && <Loading />}
         </div>
         <div className={styles.imageWrapper}>
           <Radio
