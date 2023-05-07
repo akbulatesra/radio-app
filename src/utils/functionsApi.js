@@ -1,9 +1,7 @@
 import { RadioBrowserApi, StationSearchType } from 'radio-browser-api';
-import axios from 'axios';
 
 export const getCountriesFunction = async (setFunction) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getCountries();
   const temp = response?.filter((item) => item.stationcount > 10);
   temp?.map((item) =>
@@ -13,7 +11,6 @@ export const getCountriesFunction = async (setFunction) => {
 
 export const getTagsFunction = async (setFunction) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getTags();
   const temp = response?.filter((item) => item?.stationcount > 100);
   temp?.map((item) =>
@@ -23,7 +20,6 @@ export const getTagsFunction = async (setFunction) => {
 
 export const getLanguagesFunction = async (setFunction) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getLanguages();
   const temp = response?.filter((item) => item?.stationcount > 100);
   temp?.map((item) =>
@@ -36,7 +32,6 @@ export const getRadioStationsByCountryFunction = async (
   country
 ) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getStationsBy(
     StationSearchType.byCountry,
     country
@@ -47,7 +42,6 @@ export const getRadioStationsByCountryFunction = async (
 
 export const getRadioStationsByTagFunction = async (setFunction, tag) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getStationsBy(StationSearchType.byTag, tag);
   const temp = response.filter((item) => response.indexOf(item.url) === -1);
   setFunction(temp);
@@ -58,7 +52,6 @@ export const getRadioStationByLanguageFunction = async (
   language
 ) => {
   const api = new RadioBrowserApi('My Radio App');
-  api.baseUrl = 'https://all.api.radio-browser.info';
   const response = await api.getStationsBy(
     StationSearchType.byLanguage,
     language
