@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Orbitron } from 'next/font/google';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import Select from 'react-select';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,7 +33,6 @@ export default function Home() {
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [playingStation, setPlayingStation] = useState(null);
-  const [deneme, setDeneme] = useState(null);
   const getOptionLabel = (option) => option.label;
 
   const handleCheckPlaying = (event) => {
@@ -65,7 +64,7 @@ export default function Home() {
   useEffect(() => {
     channels?.length !== 0 && setPlayingStation(channels?.[station]?.name);
   }, [channels, station]);
-  console.log(channels);
+
   return (
     <>
       <Head>
@@ -155,6 +154,7 @@ export default function Home() {
           controls
           className={styles.audio}
           onTimeUpdate={handleCheckPlaying}
+          // type="audio/mpeg"
         ></audio>
       </main>
     </>
