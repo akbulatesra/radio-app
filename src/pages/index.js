@@ -5,6 +5,9 @@ import Select from 'react-select';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '@/styles/Home.module.scss';
+import axios from 'axios';
+import { collection, addDoc } from 'firebase/firestore';
+
 import {
   getCountriesFunction,
   getTagsFunction,
@@ -21,6 +24,9 @@ const orbitron = Orbitron({
   subsets: ['latin'],
   weight: '500',
 });
+const firebase = require('firebase');
+// Required for side-effects
+require('firebase/firestore');
 
 export default function Home() {
   const [channels, setChannels] = useState([]);
@@ -65,6 +71,54 @@ export default function Home() {
     channels?.length !== 0 && setPlayingStation(channels?.[station]?.name);
   }, [channels, station]);
 
+  axios
+    .post('https://645934634eb3f674df8a0649.mockapi.io/api/v1/stations', [
+      {
+        changeuuid: '610cafba-71d8-40fc-bf68-1456ec973b9d',
+        stationuuid: '941ef6f1-0699-4821-95b1-2b678e3ff62e',
+        serveruuid: null,
+        name: '\tBest FM',
+        url: 'http://stream.bestfm.sk/128.mp3',
+        url_resolved: 'http://stream.bestfm.sk/128.mp3',
+        homepage: 'http://bestfm.sk/',
+        favicon: '',
+        tags: '',
+        country: 'Slovakia',
+        countrycode: 'SK',
+        iso_3166_2: null,
+        state: '',
+        language: '',
+        languagecodes: '',
+        votes: 29,
+        lastchangetime: '2022-11-01 08:42:32',
+        lastchangetime_iso8601: '2022-11-01T08:42:32Z',
+        codec: 'MP3',
+        bitrate: 128,
+        hls: 0,
+        lastcheckok: 1,
+        lastchecktime: '2023-05-07 20:14:39',
+        lastchecktime_iso8601: '2023-05-07T20:14:39Z',
+        lastcheckoktime: '2023-05-07 20:14:39',
+        lastcheckoktime_iso8601: '2023-05-07T20:14:39Z',
+        lastlocalchecktime: '',
+        lastlocalchecktime_iso8601: null,
+        clicktimestamp: '2023-05-08 09:53:58',
+        clicktimestamp_iso8601: '2023-05-08T09:53:58Z',
+        clickcount: 49,
+        clicktrend: -4,
+        ssl_error: 0,
+        geo_lat: null,
+        geo_long: null,
+        has_extended_info: false,
+      },
+    ])
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   return (
     <>
       <Head>
@@ -73,7 +127,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={`${styles.wrapper} ${orbitron.className}`}>
         <ToastContainer pauseOnHover theme="colored" />
         <div className={styles.loaderWrapper}>
